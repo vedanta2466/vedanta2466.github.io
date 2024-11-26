@@ -11,24 +11,30 @@
 # -----------------
 en: &DEFAULT_EN
   header:
-    title: Welcome to our Studio!
-    text: It's Nice To Meet You
-    button: Tell Me More
-    buttonlink: "#services"
+    title: "Elevate Your Business with Vedanta's Comprehensive Management Solutions"
+    text: "Vedanta: Your Business, Our Expertise"
+    button: Contact Us
+    buttonlink: "#contact"
 
   services:
     title: "Services"
-    text: "Lorem ipsum"
+    text: "Transform Your Business Today. "
     section: services
     list:
-      - title: "E-Commerce"
-        desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit."
+      - title: "Marketing Management"
+        desc: "Maximize your brand's potential with our innovative marketing strategies. From digital marketing to brand strategy management, we've got you covered."
         icon: fas fa-shopping-cart #find more at https://fontawesome.com/icons
-      - title: "Responsive Design"
-        desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit."
+      - title: "Tax Reclaim Services"
+        desc: "Recover what's rightfully yours. Our experts will meticulously analyze your business expenses to identify potential tax savings."
         icon: fas fa-laptop
-      - title: "[Markdown](https://en.wikipedia.org/wiki/Markdown)"
-        desc: "Your description here, full **Markdown** support"
+      - title: "Design Services"
+        desc: "Elevate your brand's visual identity with our cutting-edge design solutions. From logo design to web development, we create stunning visuals that catches the eye of your customers."
+        icon: fab fa-markdown
+      - title: "VAT & Corporate Tax Registrations & Filing"
+        desc: "Simplify your tax compliance. Our team of tax professionals will handle all your VAT and corporate tax registrations and filings, ensuring accuracy and efficiency."
+        icon: fab fa-markdown
+      - title: "Accounting & Auditing Services"
+        desc: "Gain financial clarity and peace of mind. Our comprehensive accounting and auditing services provide you with accurate financial insights to make informed decisions."
         icon: fab fa-markdown
 
   portfolio:
@@ -70,8 +76,9 @@ en: &DEFAULT_EN
 
   about:
     title: "About Us"
-    text: "our story"
-    body: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde. **Markdown** supported."
+    text: ""
+    body: "Vedanta Management Consultancy is a leading provider of comprehensive management solutions, committed to helping businesses thrive. With a team of highly skilled professionals, we offer a wide range of services, including marketing, tax, design, and accounting. 
+    Our expertise, coupled with our dedication to quality, ensures that our clients receive the highest level of service."
     section: about
 
   clients:
