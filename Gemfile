@@ -1,6 +1,10 @@
 source "https://rubygems.org"
 
-gem "jekyll", "~> 3.10"
-# gem "github-pages", group: :jekyll_plugins  # Comment this out or remove it if not needed
+# Specify Jekyll version 4.3.4
+gem "jekyll", "4.3.4"
 
-# Additional dependencies (if any)
+# If on Windows, you may want to include the wdm gem for directory watching
+gem "wdm", ">= 0.1.0" if Gem.win_platform?
+
+# You can also include a gemspec if you're using one in your project
+gemspec
