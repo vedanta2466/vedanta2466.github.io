@@ -1,15 +1,32 @@
 // Styling for the masthead
 header.masthead {
+  position: relative;  // Make sure the parent is positioned for the overlay to work
   text-align: center;
-  color: white;
+  color: white;  // Text remains white
   background-image: url("#{$header-image}");
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-position: center center;
   background-size: cover;
+
+  // Black overlay added
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); // Black overlay with 50% opacity
+    z-index: 1;  // Overlay sits above the background, but below content
+  }
+
   .intro-text {
+    position: relative;  // Ensure the content sits above the overlay
+    z-index: 2;  // Content (text) stays above the overlay
     padding-top: 150px;
     padding-bottom: 100px;
+    
     .intro-lead-in {
       font-size: 22px;
       font-style: italic;
@@ -17,6 +34,7 @@ header.masthead {
       margin-bottom: 25px;
       @include serif-font;
     }
+    
     .intro-heading {
       font-size: 30px;
       font-weight: 700;
@@ -26,11 +44,13 @@ header.masthead {
     }
   }
 }
+
 @media (min-width: 768px) {
   header.masthead {
     .intro-text {
       padding-top: 300px;
       padding-bottom: 200px;
+      
       .intro-lead-in {
         font-size: 25px;
         font-style: italic;
@@ -38,6 +58,7 @@ header.masthead {
         margin-bottom: 25px;
         @include serif-font;
       }
+      
       .intro-heading {
         font-size: 40px;
         font-weight: 700;
