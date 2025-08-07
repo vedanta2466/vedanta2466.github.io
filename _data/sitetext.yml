@@ -142,7 +142,7 @@ en: &DEFAULT_EN
 
   contact:
     title: "Contact Us"
-    text: "Ready to elevate your business? Get in touch with our expert team or call +971 50 893 6625"
+    text: "Ready to elevate your business? Get in touch with our expert team or call <a href='tel:+971508936625'>+971 50 893 6625</a>"
     section: contact
     name: "Name*"
     name-validation: "Please enter your name."
