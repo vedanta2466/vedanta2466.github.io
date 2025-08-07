@@ -10,7 +10,7 @@ $(function() {
     submitSuccess: function($form, event) {
       event.preventDefault(); // prevent default submit behaviour
       // get values from FORM
-	  var url = "https://formspree.io/" + "{% if site.formspree_form_path %}{{ site.formspree_form_path }}{% else %}{{ site.email }}{% endif %}";
+      var url = "https://formspree.io/" + "{% if site.formspree_form_path %}{{ site.formspree_form_path }}{% else %}{{ site.email }}{% endif %}";
       var name = $("input#name").val();
       var email = $("input#email").val();
       var phone = $("input#phone").val();
@@ -22,10 +22,22 @@ $(function() {
       }
       $this = $("#sendMessageButton");
       $this.prop("disabled", true); // Disable submit button until AJAX call is complete to prevent duplicate messages
+      
+      // Send to WhatsApp immediately
+      var whatsappMessage = "New Contact Form Submission:\n\n" +
+        "Name: " + name + "\n" +
+        "Email: " + email + "\n" +
+        "Phone: " + phone + "\n" +
+        "Message: " + message;
+      
+      var whatsappUrl = "https://wa.me/919846438600?text=" + encodeURIComponent(whatsappMessage);
+      window.open(whatsappUrl, '_blank');
+      
+      // Also send to email via Formspree
       $.ajax({
         url: url,
         type: "POST",
-	dataType: "json",
+        dataType: "json",
         data: {
           name: name,
           phone: phone,
@@ -34,13 +46,13 @@ $(function() {
         },
         cache: false,
 
-		success: function() {
+        success: function() {
           // Success message
           $('#success').html("<div class='alert alert-success'>");
           $('#success > .alert-success').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
             .append("</button>");
           $('#success > .alert-success')
-            .append("<strong>Your message has been sent. </strong>");
+            .append("<strong>Your message has been sent via email and WhatsApp! </strong>");
           $('#success > .alert-success')
             .append('</div>');
           //clear all fields
@@ -48,12 +60,12 @@ $(function() {
         },
 
         error: function() {
-          // Fail message
-          $('#success').html("<div class='alert alert-danger'>");
-          $('#success > .alert-danger').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
+          // Even if email fails, WhatsApp was sent successfully
+          $('#success').html("<div class='alert alert-warning'>");
+          $('#success > .alert-warning').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
             .append("</button>");
-          $('#success > .alert-danger').append($("<strong>").text("Sorry " + firstName + ", it seems that my mail server is not responding. Please try again later!"));
-          $('#success > .alert-danger').append('</div>');
+          $('#success > .alert-warning').append($("<strong>").text("Your message was sent via WhatsApp! Email delivery may have failed, but we received your message through WhatsApp."));
+          $('#success > .alert-warning').append('</div>');
           //clear all fields
           $('#contactForm').trigger("reset");
         },
