@@ -100,10 +100,23 @@ en: &DEFAULT_EN
     end: "Be Part <br> of Our <br> Story!"
 
   about:
-    title: "About Us"
-    text: ""
-    body: "Vedanta Management Consultancy is a leading provider of comprehensive management solutions, committed to helping businesses thrive. With a team of highly skilled professionals, we offer a wide range of services, including marketing, tax, design, and accounting. 
-    Our expertise, coupled with our dedication to quality, ensures that our clients receive the highest level of service."
+    title: "About Vedanta Management Consultancy"
+    text: "Your Trusted Partner in Business Excellence"
+    body: "At Vedanta Management Consultancy, we are your strategic partners in achieving sustainable business success. Founded on **'Empowering Policy Through Insight,'** we bring together certified professionals specializing in CFO advisory, tax compliance, business strategy, and operational excellence.
+
+
+    **Our Core Expertise:**
+    - Strategic Leadership & CFO Advisory
+    - Tax, VAT & Regulatory Compliance  
+    - Business Turnaround & Recovery
+    - Trademark & IP Protection
+    - Accounting, Audit & SOP Development
+
+
+    With years of experience serving businesses from startups to enterprises, we combine technical expertise with practical business acumen. We don't just solve problems—we build frameworks for sustainable success.
+
+
+    **Partner with Vedanta** and experience the confidence that comes from having seasoned professionals dedicated to your business growth."
     section: about
 
   clients:
