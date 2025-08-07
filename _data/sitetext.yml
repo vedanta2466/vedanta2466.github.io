@@ -10,6 +10,7 @@
 # English (default)
 # -----------------
 en: &DEFAULT_EN
+  favicon: assets/img/vedanta_icon_bg.png
   header:
     title: "Elevate Your Business with Vedanta's Comprehensive Management Solutions"
     text: "Vedanta: Your Business, Our Expertise"
