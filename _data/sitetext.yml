@@ -21,25 +21,46 @@ en: &DEFAULT_EN
     buttonlink: "#contact"
 
   services:
-    title: "Services"
-    text: "Transform Your Business Today. "
+    title: "SERVICES"
+    text: "Empowering Policy Through Insight"
     section: services
     list:
-      - title: "Marketing Management"
-        desc: "Maximize your brand's potential with our innovative marketing strategies. From digital marketing to brand strategy management, we've got you covered."
-        icon: fas fa-shopping-cart #find more at https://fontawesome.com/icons
-      - title: "Tax Reclaim Services"
-        desc: "Recover what's rightfully yours. Our experts will meticulously analyze your business expenses to identify potential tax savings."
-        icon: fas fa-laptop
-      - title: "Design Services"
-        desc: "Elevate your brand's visual identity with our cutting-edge design solutions. From logo design to web development, we create stunning visuals that catches the eye of your customers."
-        icon: fab fa-markdown
-      - title: "VAT & Corporate Tax Registrations & Filing"
-        desc: "Simplify your tax compliance. Our team of tax professionals will handle all your VAT and corporate tax registrations and filings, ensuring accuracy and efficiency."
-        icon: fab fa-markdown
-      - title: "Accounting & Auditing Services"
-        desc: "Gain financial clarity and peace of mind. Our comprehensive accounting and auditing services provide you with accurate financial insights to make informed decisions."
-        icon: fab fa-markdown
+      - title: "Business Strategy & CFO Advisory"
+        desc: "Strategic financial guidance and CFO-level advisory services to drive your business growth and optimize financial performance."
+        icon: fas fa-chart-line
+        # image: assets/img/services/strategy.png
+      - title: "Corporate Tax and VAT Compliance"
+        desc: "Complete tax compliance solutions including corporate tax planning, VAT registration, filing, and ongoing compliance management."
+        icon: fas fa-file-invoice-dollar
+        # image: assets/img/services/tax-compliance.png
+      - title: "Industrial Licenses, MOIAT & MOE Services"
+        desc: "Comprehensive licensing support for industrial operations, including MOIAT and Ministry of Economy services and approvals."
+        icon: fas fa-industry
+        # image: assets/img/services/licenses.png
+      - title: "Business Turnaround & Recovery"
+        desc: "Expert restructuring and recovery services to help distressed businesses navigate challenges and return to profitability."
+        icon: fas fa-sync-alt
+        # image: assets/img/services/turnaround.png
+      - title: "Trademark & Product Registrations"
+        desc: "Protect your intellectual property with our trademark registration and product registration services across multiple jurisdictions."
+        icon: fas fa-trademark
+        # image: assets/img/services/trademark.png
+      - title: "Accounting & Bookkeeping"
+        desc: "Professional accounting and bookkeeping services to maintain accurate financial records and ensure regulatory compliance."
+        icon: fas fa-calculator
+        # image: assets/img/services/accounting.png
+      - title: "Audit Support"
+        desc: "Comprehensive audit support services to prepare your business for external audits and ensure compliance with auditing standards."
+        icon: fas fa-search
+        # image: assets/img/services/audit.png
+      - title: "SOP Development & Implementation"
+        desc: "Create and implement Standard Operating Procedures to streamline operations and ensure consistent business processes."
+        icon: fas fa-cogs
+        # image: assets/img/services/sop.png
+      - title: "Policy Creation & Process Development"
+        desc: "Develop robust policies and processes that align with your business objectives and regulatory requirements."
+        icon: fas fa-clipboard-list
+        # image: assets/img/services/policy.png
 
   portfolio:
     title: "Portfolio"
