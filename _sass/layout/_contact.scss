@@ -48,3 +48,47 @@ section#contact {
     @include heading-font;
   }
 }
+
+// Contact buttons styling
+.contact-buttons {
+  .btn {
+    margin: 0.25rem;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+  }
+  
+  .btn-success {
+    background-color: #25d366;
+    border-color: #25d366;
+    
+    &:hover {
+      background-color: #128c7e;
+      border-color: #128c7e;
+    }
+  }
+  
+  .btn-outline-primary {
+    color: white;
+    border-color: white;
+    
+    &:hover {
+      background-color: white;
+      border-color: white;
+      color: $primary;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-buttons {
+    .btn {
+      display: block;
+      width: 80%;
+      margin: 0.5rem auto;
+    }
+  }
+}

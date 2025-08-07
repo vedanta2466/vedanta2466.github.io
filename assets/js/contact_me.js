@@ -30,7 +30,14 @@ $(function() {
         "💬 Message: " + message + "\n\n" +
         "⏰ Time: " + new Date().toLocaleString();
       
-      var whatsappUrl = "https://wa.me/{% if site.data.sitetext[site.locale].contact_phone %}{{ site.data.sitetext[site.locale].contact_phone }}{% else %}{{ site.data.sitetext.contact_phone }}{% endif %}?text=" + encodeURIComponent(whatsappMessage);
+      // WhatsApp number - ensure it's properly formatted
+      var whatsappPhone = "{% if site.data.sitetext[site.locale] and site.data.sitetext[site.locale].contact_phone %}{{ site.data.sitetext[site.locale].contact_phone }}{% else %}{{ site.data.sitetext.contact_phone }}{% endif %}";
+      var whatsappUrl = "https://wa.me/" + whatsappPhone + "?text=" + encodeURIComponent(whatsappMessage);
+      
+      // Log for debugging
+      console.log("WhatsApp Phone:", whatsappPhone);
+      console.log("WhatsApp URL:", whatsappUrl);
+      console.log("WhatsApp Message:", whatsappMessage);
       
       // Send email using a simple mailto approach as fallback
       var emailSubject = "New Contact Form Submission from " + name;

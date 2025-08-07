@@ -49,8 +49,21 @@
             <div class="clearfix"></div>
             <div class="col-lg-12 text-center">
               <div id="success"></div>
-              <button id="sendMessageButton" class="btn btn-primary btn-xl text-uppercase"
-                type="submit">{{ site.data.sitetext[site.locale].contact.submit | default: "Send Message" }}</button>
+              <div class="contact-buttons">
+                <button id="sendMessageButton" class="btn btn-primary btn-xl text-uppercase"
+                  type="submit">{{ site.data.sitetext[site.locale].contact.submit | default: "Send Message" }}</button>
+                <div class="mt-3">
+                  <span class="text-muted">or contact us directly via</span><br>
+                  <a href="https://wa.me/{% if site.data.sitetext[site.locale].contact_phone %}{{ site.data.sitetext[site.locale].contact_phone }}{% else %}{{ site.data.sitetext.contact_phone }}{% endif %}" 
+                     class="btn btn-success btn-lg mt-2" target="_blank">
+                    <i class="fab fa-whatsapp"></i> WhatsApp
+                  </a>
+                  <a href="mailto:{% if site.data.sitetext[site.locale].contact_email %}{{ site.data.sitetext[site.locale].contact_email }}{% else %}{{ site.data.sitetext.contact_email }}{% endif %}" 
+                     class="btn btn-outline-primary btn-lg mt-2 ml-2">
+                    <i class="fas fa-envelope"></i> Email
+                  </a>
+                </div>
+              </div>
             </div>
             <input type="text" name="_gotcha" style="display:none">
             <input type="hidden" name="_next" value="#" />
@@ -110,8 +123,21 @@
             <div class="clearfix"></div>
             <div class="col-lg-12 text-center">
               <div id="success"></div>
-              <button id="sendMessageButton" class="btn btn-primary btn-xl text-uppercase"
-                type="submit">{{ site.data.sitetext.contact.submit | default: "Send Message" }}</button>
+              <div class="contact-buttons">
+                <button id="sendMessageButton" class="btn btn-primary btn-xl text-uppercase"
+                  type="submit">{{ site.data.sitetext.contact.submit | default: "Send Message" }}</button>
+                <div class="mt-3">
+                  <span class="text-muted">or contact us directly via</span><br>
+                  <a href="https://wa.me/{% if site.data.sitetext[site.locale] and site.data.sitetext[site.locale].contact_phone %}{{ site.data.sitetext[site.locale].contact_phone }}{% else %}{{ site.data.sitetext.contact_phone }}{% endif %}" 
+                     class="btn btn-success btn-lg mt-2" target="_blank">
+                    <i class="fab fa-whatsapp"></i> WhatsApp
+                  </a>
+                  <a href="mailto:{% if site.data.sitetext[site.locale] and site.data.sitetext[site.locale].contact_email %}{{ site.data.sitetext[site.locale].contact_email }}{% else %}{{ site.data.sitetext.contact_email }}{% endif %}" 
+                     class="btn btn-outline-primary btn-lg mt-2 ml-2">
+                    <i class="fas fa-envelope"></i> Email
+                  </a>
+                </div>
+              </div>
             </div>
             <input type="text" name="_gotcha" style="display:none">
             <input type="hidden" name="_next" value="#" />
