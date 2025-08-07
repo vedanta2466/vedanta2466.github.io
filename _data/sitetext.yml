@@ -12,7 +12,7 @@
 en: &DEFAULT_EN
   favicon: assets/img/vedanta_icon_bg.png
   contact_email: vedanta2466@gmail.com
-  contact_phone: 919846438600 # Test number, change to 971508936625 for production
+  contact_phone: 971508936625 # Production UAE number +971 50 893 6625
   formspree_form_id: xanblyld
   header:
     title: "Elevate Your Business with Vedanta's Comprehensive Management Solutions"
