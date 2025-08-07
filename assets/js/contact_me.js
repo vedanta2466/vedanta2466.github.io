@@ -30,7 +30,7 @@ $(function() {
         "💬 Message: " + message + "\n\n" +
         "⏰ Time: " + new Date().toLocaleString();
       
-      var whatsappUrl = "https://wa.me/{{ site.data.sitetext[site.locale].contact_phone | default: site.data.sitetext.contact_phone }}?text=" + encodeURIComponent(whatsappMessage);
+      var whatsappUrl = "https://wa.me/{% if site.data.sitetext[site.locale].contact_phone %}{{ site.data.sitetext[site.locale].contact_phone }}{% else %}{{ site.data.sitetext.contact_phone }}{% endif %}?text=" + encodeURIComponent(whatsappMessage);
       
       // Send email using a simple mailto approach as fallback
       var emailSubject = "New Contact Form Submission from " + name;
@@ -40,74 +40,106 @@ $(function() {
                      "Message: " + message + "\n\n" +
                      "Submitted at: " + new Date().toLocaleString();
       
-      var mailtoUrl = "mailto:{{ site.data.sitetext[site.locale].contact_email | default: site.data.sitetext.contact_email }}?subject=" + encodeURIComponent(emailSubject) + 
+      var mailtoUrl = "mailto:{% if site.data.sitetext[site.locale].contact_email %}{{ site.data.sitetext[site.locale].contact_email }}{% else %}{{ site.data.sitetext.contact_email }}{% endif %}?subject=" + encodeURIComponent(emailSubject) + 
                      "&body=" + encodeURIComponent(emailBody);
       
-      // Try to send via formspree first
-      var formspreeUrl = "https://formspree.io/f/xdkojpkw"; // You'll need to create this endpoint
+      // Try to send via formspree first (if form ID is configured)
+      {% if site.data.sitetext[site.locale].formspree_form_id or site.data.sitetext.formspree_form_id %}
+      var formspreeUrl = "https://formspree.io/f/{% if site.data.sitetext[site.locale].formspree_form_id %}{{ site.data.sitetext[site.locale].formspree_form_id }}{% else %}{{ site.data.sitetext.formspree_form_id }}{% endif %}";
+      {% else %}
+      var formspreeUrl = null;
+      {% endif %}
       
-      $.ajax({
-        url: formspreeUrl,
-        type: "POST",
-        dataType: "json",
-        data: {
-          name: name,
-          phone: phone,
-          email: email,
-          message: message,
-          _subject: emailSubject
-        },
-        cache: false,
+      if (formspreeUrl) {
+        // Try Formspree first
+        $.ajax({
+          url: formspreeUrl,
+          type: "POST",
+          dataType: "json",
+          data: {
+            name: name,
+            phone: phone,
+            email: email,
+            message: message,
+            _subject: emailSubject
+          },
+          cache: false,
 
-        success: function() {
-          // Success message - both email and WhatsApp
-          $('#success').html("<div class='alert alert-success'>");
-          $('#success > .alert-success').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
-            .append("</button>");
-          $('#success > .alert-success')
-            .append("<strong>Thank you " + firstName + "! </strong>");
-          $('#success > .alert-success')
-            .append("Your message has been sent via email successfully! WhatsApp will also open for instant contact.");
-          $('#success > .alert-success').append('</div>');
-          
-          // Clear form
-          $('#contactForm').trigger("reset");
-          
-          // Open WhatsApp after delay
-          setTimeout(function() {
-            window.open(whatsappUrl, '_blank');
-          }, 2000);
-        },
-
-        error: function() {
-          // If Formspree fails, try mailto
-          $('#success').html("<div class='alert alert-warning'>");
-          $('#success > .alert-warning').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
-            .append("</button>");
-          $('#success > .alert-warning')
-            .append("<strong>Thank you " + firstName + "! </strong>");
-          $('#success > .alert-warning')
-            .append("Your message will be sent via your email client and WhatsApp. Please complete both sending processes.");
-          $('#success > .alert-warning').append('</div>');
-          
-          // Clear form
-          $('#contactForm').trigger("reset");
-          
-          // Open both email client and WhatsApp
-          setTimeout(function() {
-            window.location.href = mailtoUrl;
+          success: function() {
+            // Success message - both email and WhatsApp
+            $('#success').html("<div class='alert alert-success'>");
+            $('#success > .alert-success').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
+              .append("</button>");
+            $('#success > .alert-success')
+              .append("<strong>Thank you " + firstName + "! </strong>");
+            $('#success > .alert-success')
+              .append("Your message has been sent via email successfully! WhatsApp will also open for instant contact.");
+            $('#success > .alert-success').append('</div>');
+            
+            // Clear form
+            $('#contactForm').trigger("reset");
+            
+            // Open WhatsApp after delay
             setTimeout(function() {
               window.open(whatsappUrl, '_blank');
-            }, 1000);
-          }, 1500);
-        },
+            }, 2000);
+          },
 
-        complete: function() {
+          error: function() {
+            // If Formspree fails, try mailto
+            $('#success').html("<div class='alert alert-warning'>");
+            $('#success > .alert-warning').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
+              .append("</button>");
+            $('#success > .alert-warning')
+              .append("<strong>Thank you " + firstName + "! </strong>");
+            $('#success > .alert-warning')
+              .append("Your message will be sent via your email client and WhatsApp. Please complete both sending processes.");
+            $('#success > .alert-warning').append('</div>');
+            
+            // Clear form
+            $('#contactForm').trigger("reset");
+            
+            // Open both email client and WhatsApp
+            setTimeout(function() {
+              window.location.href = mailtoUrl;
+              setTimeout(function() {
+                window.open(whatsappUrl, '_blank');
+              }, 1000);
+            }, 1500);
+          },
+
+          complete: function() {
+            setTimeout(function() {
+              $this.prop("disabled", false);
+            }, 2000);
+          }
+        });
+      } else {
+        // No Formspree configured, use mailto and WhatsApp only
+        $('#success').html("<div class='alert alert-info'>");
+        $('#success > .alert-info').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
+          .append("</button>");
+        $('#success > .alert-info')
+          .append("<strong>Thank you " + firstName + "! </strong>");
+        $('#success > .alert-info')
+          .append("Your message will be sent via your email client and WhatsApp. Please complete both sending processes.");
+        $('#success > .alert-info').append('</div>');
+        
+        // Clear form
+        $('#contactForm').trigger("reset");
+        
+        // Open both email client and WhatsApp
+        setTimeout(function() {
+          window.location.href = mailtoUrl;
           setTimeout(function() {
-            $this.prop("disabled", false);
-          }, 2000);
-        }
-      });
+            window.open(whatsappUrl, '_blank');
+          }, 1000);
+        }, 1500);
+        
+        setTimeout(function() {
+          $this.prop("disabled", false);
+        }, 2000);
+      }
     },
     filter: function() {
       return $(this).is(":visible");
