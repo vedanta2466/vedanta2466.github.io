@@ -138,7 +138,7 @@ en: &DEFAULT_EN
 
   contact:
     title: "Contact Us"
-    text: "Lorem ipsum or call 123456789"
+    text: "Ready to elevate your business? Get in touch with our expert team or call +971 50 893 6625"
     section: contact
     name: "Name*"
     name-validation: "Please enter your name."
